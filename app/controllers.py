@@ -1,1 +1,1 @@
-# Arquivo para lógica do sistema
+# Arquivo para logica do sistema
