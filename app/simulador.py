@@ -1,16 +1,9 @@
-import random
-import time
-
-def sensor_movimento():
-    return random.choice([True, False])
-
-def sensor_temperatura():
-    return random.uniform(18.0, 30.0)
-
-while True:
-    movimento = sensor_movimento()
-    temperatura = sensor_temperatura()
-    print(f"Movimento: {'Detectado' if movimento else 'Não detectado'}, Temperatura: {temperatura:.2f}°C")
-    time.sleep(5)
-
-    
+def rodar_simulacao(dado):
+    # A lógica da sua simulação vai aqui
+    # Por exemplo, vamos apenas simular que o dado é multiplicado por 2
+    try:
+        dado = float(dado)  # Tentando converter o dado para número
+        resultado = dado * 2
+        return f'O resultado da simulação é: {resultado}'
+    except ValueError:
+        return 'Erro: O dado inserido não é válido. Por favor, insira um número.'
