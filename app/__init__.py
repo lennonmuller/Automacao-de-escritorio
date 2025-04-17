@@ -1,5 +1,8 @@
 from flask import Flask
+from app.routes import routes
 
-app = Flask(__name__)  # Criamos o app aqui
+def create_app():
+    app = Flask(__name__)
+    app.register_blueprint(routes)
 
-from app import routes  # ✅ Importamos routes depois de criar o app
+    return app

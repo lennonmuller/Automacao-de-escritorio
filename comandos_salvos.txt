@@ -1,0 +1,4 @@
+ligar luz da sala
+ligar interruptores de fora
+desligar luz
+desligar luz sala

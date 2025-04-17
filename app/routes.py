@@ -1,11 +1,34 @@
-from flask import Flask, render_template, jsonify
-from app import app
-from app.controllers import obter_dados_simulados  # Importa a função de simulação
+from flask import Blueprint, render_template, request, jsonify
+from app.controllers import salvar_comando, contar_comandos
 
-@app.route("/")  # ✅ Define a rota principal
+routes = Blueprint("routes", __name__)
+
+@routes.route("/")
 def index():
-    return render_template("index.html")  # Certifique-se de que o arquivo index.html existe!
+    return render_template("index.html")
 
-@app.route("/dados")  # ✅ Cria uma rota para fornecer os dados simulados em JSON
-def dados():
-    return jsonify(obter_dados_simulados())  # Retorna os dados simulados em formato JSON
+@routes.route("/teste")
+def teste():
+    return "Testando rota personalizada!"
+
+@routes.route("/salvar_comando", methods=["GET", "POST"])
+def salvar():
+    if request.method == "POST":
+        comando = request.form.get("comando") or (request.guet_json() or {}).get("comando")
+
+        if not comando:
+            return jsonify({"erro": "Comando inválido"}), 400
+        
+        resultado = salvar_comando(comando)
+
+        #se veio de formulario retorna para a mesma pagina
+        if request.form:
+            return render_template("comandos.html", mensagem=resultado)
+        
+        # se veio do teste via API
+        return jsonify({"mensagem": resultado})
+    
+    quantidade = contar_comandos()
+    return render_template("comandos.html", quantidade=quantidade)
+
+

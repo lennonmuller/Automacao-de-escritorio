@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Enviar Comando</title>
+</head>
+<body>
+    <h1>Enviar Comando</h1>
+    <form method="POST" action="/salvar_comando">
+        <input type="text" name="comando" placeholder="Digite seu comando">
+        <button type="submit">Enviar</button>
+    </form>
+    <p>Total de comandos salvos: {{ quantidade }}</p>
+</body>
+</html>
