@@ -7,4 +7,4 @@ mensagem = f"Commit automático - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 # Comandos git
 os.system("git add .")
 os.system(f'git commit -m "{mensagem}"')
-os.system("git push origin master")
+os.system("git push")
