@@ -1,7 +1,14 @@
+from datetime import datetime
+
+
+
 def salvar_comando(comando):
     try:
+        agora = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        linha = f"{agora} - {comando}\n"
+
         with open("comandos_salvos.txt", "a", encoding="utf-8") as arquivo:
-            arquivo.write(comando + "\n")   # Adiciona uma nova linha após cada comando
+            arquivo.write(linha)
         return "Comando salvo com sucesso!"
     
     except Exception as e:

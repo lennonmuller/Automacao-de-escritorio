@@ -31,4 +31,22 @@ def salvar():
     quantidade = contar_comandos()
     return render_template("comandos.html", quantidade=quantidade)
 
+@routes.route("/historico")
+def historico():
+    comandos = []
+    try:
+        with open("comandos_salvos.txt", "r", encoding="utf-8") as arquivo:
+            linhas = arquivo.readlines()
+            for linha in linhas:
+                if " - " in linha:
+                    data, comando = linha.strip().split(" - ", 1)
+                    comandos.append((data, comando))
+                else:
+                    comandos.append(("Desconhecido", linha.strip()))  # linha antiga ou mal formatada
+    except FileNotFoundError:
+        pass  # Nenhum comando salvo ainda
+
+    return render_template("historico.html", comandos=comandos)
+
+
 
