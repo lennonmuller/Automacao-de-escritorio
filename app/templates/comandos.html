@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <title>Enviar Comando</title>
-</head>
-<body>
-    <h1>Enviar Comando</h1>
-    <form method="POST" action="/salvar_comando">
-        <input type="text" name="comando" placeholder="Digite seu comando">
-        <button type="submit">Enviar</button>
-    </form>
-    <p>Total de comandos salvos: {{ quantidade }}</p>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Salvar Comando{% endblock %}
+
+{% block content %}
+<h2>Salvar Novo Comando</h2>
+<form method="POST">
+    <input type="text" name="comando" placeholder="Digite um comando" required>
+    <button type="submit">Salvar</button>
+</form>
+
+{% if mensagem %}
+    <p>{{ mensagem }}</p>
+{% endif %}
+{% endblock %}
