@@ -5,6 +5,13 @@
 {% block content %}
 <h2>Histórico de Comandos</h2>
 <ul>
+    <form method="GET" action="/historico">
+        <label for="filtro">Buscar comando:</label>
+        <input type="text" id="filtro" name="filtro" placeholder="Digite uma palavra...">
+        <button type="submit">Filtrar</button>
+    </form>
+    <br>
+    
     {% for data, comando in comandos %}
         <li><strong>{{ data }}</strong>: {{ comando }}</li>
     {% endfor %}
